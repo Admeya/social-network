@@ -1,14 +1,30 @@
 package com.highload.socialnetwork.services.persistence.impl;
 
-import org.junit.jupiter.api.Test;
+import com.highload.socialnetwork.model.persistense.User;
+import com.highload.socialnetwork.services.persistence.UserRepository;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class UserRepositoryImplTest {
 
-class UserRepositoryImplTest {
+    @Autowired
+    private UserRepository userRepository;
+
+    private JdbcTemplate jdbcTemplate;
+
+    @Before
+    public void init() {
+        jdbcTemplate = new JdbcTemplate();
+        userRepository = new UserRepositoryImpl(jdbcTemplate);
+    }
 
     @Test
-    void findById() {
+    public void findById() {
 
+        User user = userRepository.findById(1L);
 
+        System.out.println(user);
     }
 }

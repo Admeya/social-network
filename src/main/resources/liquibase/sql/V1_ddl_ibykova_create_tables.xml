@@ -17,6 +17,15 @@
             </column>
             <column name="status" type="varchar(100)"/>
             <column name="birthday" type="timestamp"/>
+            <column name="login" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_salt" type="varchar(24)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="varchar(44)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -1,21 +1,52 @@
 package com.highload.socialnetwork.model.persistense;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 import java.time.LocalDate;
 
 @AllArgsConstructor
+@Builder
 public class User {
 
-    long userId;
+    /**
+     * Уникальный идентификатор пользователя
+     */
+    private long userId;
+    /**
+     * Имя пользователя
+     */
+    private String name;
+    /**
+     * Фамилия пользователя
+     */
+    private String surname;
 
-    String name;
+    /**
+     * Семейное положение
+     */
+    private String status;
 
-    String surname;
+    /**
+     * Дата рождения
+     */
+    private LocalDate birthday;
 
-    String status;
+    /**
+     * Логин
+     */
+    private String login;
 
-    LocalDate birthday;
+    /**
+     * Соль пароля
+     */
+    private String passwordSalt;
+
+    /**
+     * Хэш пароля
+     */
+    private String passwordHash;
+
 
 
 }

@@ -30,18 +30,13 @@ buildscript {
     dependencies {
         implementation "org.springframework.boot:spring-boot-starter-mustache:${mustacheVersion}"
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
         implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
         implementation 'org.springframework.boot:spring-boot-starter-jdbc'
         runtimeOnly 'mysql:mysql-connector-java'
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        }
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
         testCompile "org.projectlombok:lombok:${lombokVersion}"
-    }
-
-    test {
-        useJUnitPlatform()
     }
