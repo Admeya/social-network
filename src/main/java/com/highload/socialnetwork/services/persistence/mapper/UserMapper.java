@@ -18,8 +18,7 @@ public class UserMapper {
                     resultSet.getString("status"),
                     getDate(resultSet.getDate("birthday")),
                     resultSet.getString("login"),
-                    resultSet.getString("password_salt"),
-                    resultSet.getString("password_hash")
+                    resultSet.getString("password")
     );
 
     private LocalDate getDate(java.sql.Date date) {

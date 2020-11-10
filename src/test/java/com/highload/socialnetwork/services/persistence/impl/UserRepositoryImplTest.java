@@ -3,9 +3,11 @@ package com.highload.socialnetwork.services.persistence.impl;
 import com.highload.socialnetwork.model.persistense.User;
 import com.highload.socialnetwork.services.persistence.UserRepository;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserRepositoryImplTest {
 
@@ -23,8 +25,11 @@ public class UserRepositoryImplTest {
     @Test
     public void findById() {
 
-        User user = userRepository.findById(1L);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-        System.out.println(user);
+
+       // User user = userRepository.findByLogin("test");
+
+        System.out.println(encoder.encode("user"));
     }
 }

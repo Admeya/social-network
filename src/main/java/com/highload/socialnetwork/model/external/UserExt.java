@@ -1,4 +1,4 @@
-package com.highload.socialnetwork.model.persistense;
+package com.highload.socialnetwork.model.external;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 @Getter
-public class User {
+public class UserExt {
 
     /**
      * Уникальный идентификатор пользователя
@@ -20,7 +20,7 @@ public class User {
     /**
      * Имя пользователя
      */
-    private String name;
+    private String username;
     /**
      * Фамилия пользователя
      */
@@ -45,5 +45,10 @@ public class User {
      * Зашифрованный пароль
      */
     private String password;
+
+    /**
+     * Поле подтверждения пароля на форме
+     */
+    private String confirmPassword;
 
 }

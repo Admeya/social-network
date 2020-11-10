@@ -8,7 +8,7 @@ public interface UserRepository {
 
     List<User> findAll();
 
-    User findById(Long id);
+    User findByLogin(String login);
 
     User save(User user);
 

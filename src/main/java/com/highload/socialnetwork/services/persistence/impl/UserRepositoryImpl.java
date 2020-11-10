@@ -5,6 +5,7 @@ import com.highload.socialnetwork.services.persistence.UserRepository;
 import com.highload.socialnetwork.services.persistence.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserRepository.class);
 
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public UserRepositoryImpl(JdbcTemplate jdbcTemplate) {
@@ -28,15 +30,14 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findById(Long id) {
-        String preparedById = "select * from db_social.users where user_id = ?";
+    public User findByLogin(String login) {
+        String preparedByLogin = "select * from db_social.users where login = ?";
         User user = null;
         try {
-            user = (User) jdbcTemplate.query(preparedById, new Object[]{id}, UserMapper.ROW_MAPPER);
+            user = jdbcTemplate.queryForObject(preparedByLogin, new Object[]{login}, UserMapper.ROW_MAPPER);
         } catch (DataAccessException dataAccessException) {
-            LOGGER.debug("Couldn't find entity of type Person with id {}", id);
+            LOGGER.debug("Couldn't find entity of type Person with login {}", login);
         }
-
         return user;
     }
 
