@@ -31,10 +31,16 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByLogin(String login) {
-        String preparedByLogin = "select * from db_social.users where login = ?";
+        String preparedByLogin = "select u.*, (select group_concat(r.name) as roles\n" +
+                "from users u\n" +
+                "    left join user_role ur on u.user_id = ur.user_id\n" +
+                "    left join role r on ur.role_id = r.role_id\n" +
+                "where u.login=?) as roles\n" +
+                "from db_social.users u where login = ?";
+
         User user = null;
         try {
-            user = jdbcTemplate.queryForObject(preparedByLogin, new Object[]{login}, UserMapper.ROW_MAPPER);
+            user = jdbcTemplate.queryForObject(preparedByLogin, new Object[]{login, login}, UserMapper.ROW_MAPPER);
         } catch (DataAccessException dataAccessException) {
             LOGGER.debug("Couldn't find entity of type Person with login {}", login);
         }

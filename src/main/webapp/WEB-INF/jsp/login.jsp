@@ -23,9 +23,6 @@
 
     <title>Log in with your account</title>
 
-    <%--    <link href="${contextPath}/static/css/bootstrap.min.css" rel="stylesheet">--%>
-    <%--    <link href="${contextPath}/static/css/common.css" rel="stylesheet">--%>
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -53,7 +50,7 @@
                                 <div class="form-group ${error != null ? 'has-error' : ''}">
                                     <label for="username" class="sr-only">Логин</label>
                                     <input type="text" name="username" id="username" class="form-control"
-                                           placeholder="Username" autofocus="true">
+                                           placeholder="Login" autofocus="true">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Пароль</label>
@@ -77,9 +74,6 @@
         </div>
     </main>
 </div>
-<!-- /container -->
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--%>
-<%--<script src="${contextPath}/static/js/bootstrap.min.js"></script>--%>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
