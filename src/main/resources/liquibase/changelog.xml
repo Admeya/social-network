@@ -8,5 +8,6 @@
 
     <include file="sql/V1_ddl_ibykova_create_tables.xml" relativeToChangelogFile="true"/>
     <include file="sql/V2_ddl_ibykova_create_table_role_userrole.xml" relativeToChangelogFile="true"/>
+    <include file="sql/V3_dml_ibykova_add_autoincrement_users.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

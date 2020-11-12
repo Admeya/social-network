@@ -11,7 +11,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 @Getter
 public class User {
 
@@ -51,6 +51,6 @@ public class User {
     /**
      * Список ролей пользователя
      */
-    private List<GrantedAuthority> roles;
+    private List<AccessRole> roles;
 
 }

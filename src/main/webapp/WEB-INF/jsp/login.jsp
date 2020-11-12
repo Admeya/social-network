@@ -64,7 +64,7 @@
 
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
-                            <p class="login-card-footer-text">Забыли пароль?&nbsp;&nbsp;
+                            <p class="login-card-footer-text">&nbsp;&nbsp;
                                 <a href="${contextPath}/registration" class="text-reset">Зарегистрироваться</a>
                             </p>
                         </div>

@@ -1,5 +1,6 @@
 package com.highload.socialnetwork.services.persistence.mapper;
 
+import com.highload.socialnetwork.model.persistense.AccessRole;
 import com.highload.socialnetwork.model.persistense.User;
 import lombok.experimental.UtilityClass;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @UtilityClass
 public class UserMapper {
@@ -34,11 +36,15 @@ public class UserMapper {
         return date.toLocalDate();
     }
 
-    private static List<GrantedAuthority> getAuthorities(String strRoles) {
+    private static List<AccessRole> getAuthorities(String strRoles) {
+        if (Objects.isNull(strRoles)) {
+            return List.of();
+        }
+
         List<String> roles = Arrays.asList(strRoles.split("\\s*,\\s*"));
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        List<AccessRole> authorities = new ArrayList<>();
         for (String role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role));
+            authorities.add(AccessRole.from(role));
         }
         return authorities;
     }

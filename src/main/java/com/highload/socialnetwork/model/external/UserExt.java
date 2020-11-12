@@ -1,16 +1,13 @@
 package com.highload.socialnetwork.model.external;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Getter
+@Data
 public class UserExt {
 
     /**

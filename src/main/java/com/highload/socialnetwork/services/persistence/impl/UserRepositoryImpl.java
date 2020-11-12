@@ -1,5 +1,6 @@
 package com.highload.socialnetwork.services.persistence.impl;
 
+import com.highload.socialnetwork.model.persistense.AccessRole;
 import com.highload.socialnetwork.model.persistense.User;
 import com.highload.socialnetwork.services.persistence.UserRepository;
 import com.highload.socialnetwork.services.persistence.mapper.UserMapper;
@@ -48,8 +49,17 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User save(User user) {
-        return null;
+    public void save(User user) {
+        String preparedSaveUser = "INSERT INTO users(name, surname, birthday, login, password) VALUES(?,?,?,?,?)";
+        jdbcTemplate.update(preparedSaveUser, user.getName(), user.getSurname(), user.getBirthday(), user.getLogin(), user.getPassword());
+
+        User savedUser = findByLogin(user.getLogin());
+        String preparedRoleSearch = "SELECT role_id FROM role WHERE name = ?";
+        String preparedUserRoleInsert = "INSERT INTO user_role(user_id, role_id) VALUES (?,?)";
+        for (AccessRole role : user.getRoles()) {
+            long idRole = jdbcTemplate.queryForObject(preparedRoleSearch, new Object[]{role.name()}, Long.class);
+            jdbcTemplate.update(preparedUserRoleInsert, savedUser.getUserId(), idRole);
+        }
     }
 
     @Override

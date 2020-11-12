@@ -1,6 +1,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8" %>
+<%@ page session="false" %>
+<%request.setCharacterEncoding("UTF-8");%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -27,14 +31,13 @@
 <body>
 
 <div class="container">
-
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
+    <form:form method="POST" modelAttribute="userRegForm" class="form-signin">
         <h2 class="form-signin-heading">Create your account</h2>
-        <spring:bind path="username">
+        <spring:bind path="login">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" class="form-control" placeholder="Username"
+                <form:input type="text" path="login" class="form-control" placeholder="Login"
                             autofocus="true"></form:input>
-                <form:errors path="username"></form:errors>
+                <form:errors path="login"></form:errors>
             </div>
         </spring:bind>
 
@@ -50,6 +53,22 @@
                 <form:input type="password" path="confirmPassword" class="form-control"
                             placeholder="Confirm your password"></form:input>
                 <form:errors path="confirmPassword"></form:errors>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="username">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="username" class="form-control" placeholder="Имя"
+                            autofocus="true"></form:input>
+                <form:errors path="username"></form:errors>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="surname">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="surname" class="form-control" placeholder="Фамилия"
+                            autofocus="true"></form:input>
+                <form:errors path="surname"></form:errors>
             </div>
         </spring:bind>
 
