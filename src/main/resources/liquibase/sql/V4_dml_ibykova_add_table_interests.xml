@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="irina" id="addTableInterests">
+        <createTable tableName="interests">
+            <column name="interest_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="INTERESTS_PK"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="irina" id="addAutoIncrementInterests">
+        <addAutoIncrement columnName="interest_id" columnDataType="BIGINT" incrementBy="1" tableName="interests"/>
+    </changeSet>
+    <changeSet author="irina" id="createTable_user_interests">
+        <createTable tableName="user_interests">
+            <column name="user_id" type="BIGINT"/>
+            <column name="interest_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="irina" id="insert_interests">
+        <insert tableName="interests">
+            <column name="name" value="живопись"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="музыка"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="театры, кино"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="путешествия"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="спорт"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="здоровое питание"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="книги"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="мистика"/>
+        </insert>
+        <insert tableName="interests">
+            <column name="name" value="кулинария"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+
