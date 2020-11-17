@@ -4,8 +4,6 @@ import com.highload.socialnetwork.model.persistense.AccessRole;
 import com.highload.socialnetwork.model.persistense.User;
 import lombok.experimental.UtilityClass;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -26,8 +24,10 @@ public class UserMapper {
                     getDate(resultSet.getDate("birthday")),
                     resultSet.getString("login"),
                     resultSet.getString("password"),
-                    getAuthorities(resultSet.getString("roles"))
-    );
+                    getAuthorities(resultSet.getString("roles")),
+                    resultSet.getString("sex"),
+                    resultSet.getString("city")
+            );
 
     private LocalDate getDate(java.sql.Date date) {
         if (date == null) {

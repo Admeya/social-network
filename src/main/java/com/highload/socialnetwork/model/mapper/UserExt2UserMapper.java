@@ -14,6 +14,8 @@ public class UserExt2UserMapper {
                 .birthday(userExt.getBirthday())
                 .login(userExt.getLogin())
                 .password(userExt.getPassword())
+                .sex(userExt.getSex())
+                .city(userExt.getCity())
                 .build();
     }
 }

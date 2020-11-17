@@ -48,4 +48,14 @@ public class UserExt {
      */
     private String confirmPassword;
 
+    /**
+     * Пол
+     */
+    private String sex;
+
+    /**
+     * Город
+     */
+    private String city;
+
 }

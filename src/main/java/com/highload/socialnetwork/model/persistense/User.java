@@ -53,4 +53,14 @@ public class User {
      */
     private List<AccessRole> roles;
 
+    /**
+     * Пол
+     */
+    private String sex;
+
+    /**
+     * Город
+     */
+    private String city;
+
 }
