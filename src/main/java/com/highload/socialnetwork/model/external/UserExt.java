@@ -58,4 +58,11 @@ public class UserExt {
      */
     private String city;
 
+    /**
+     * Интересы
+     */
+    private String interests;
+
+    private int age;
+
 }

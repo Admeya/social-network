@@ -63,4 +63,8 @@ public class User {
      */
     private String city;
 
+    private String interests;
+
+    private int age;
+
 }

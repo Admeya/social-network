@@ -26,7 +26,9 @@ public class UserMapper {
                     resultSet.getString("password"),
                     getAuthorities(resultSet.getString("roles")),
                     resultSet.getString("sex"),
-                    resultSet.getString("city")
+                    resultSet.getString("city"),
+                    resultSet.getString("interests"),
+                    resultSet.getInt("age")
             );
 
     private LocalDate getDate(java.sql.Date date) {

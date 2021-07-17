@@ -12,5 +12,7 @@
     <include file="sql/V4_dml_ibykova_add_table_interests.xml" relativeToChangelogFile="true"/>
     <include file="sql/V5_dml_ibykova_add_table_friends.xml" relativeToChangelogFile="true"/>
     <include file="sql/V6_dml_ibykova_add_columns_in_users_for_registration_page.xml" relativeToChangelogFile="true"/>
+    <include file="sql/V7_dml_ibykova_add_columns_in_users_interests.xml" relativeToChangelogFile="true"/>
+    <include file="sql/V8_dml_ibykova_add_columns_in_users_age.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

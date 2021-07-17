@@ -72,6 +72,14 @@
             </div>
         </spring:bind>
 
+        <spring:bind path="age">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="age" class="form-control" placeholder="Возраст"
+                            autofocus="true"></form:input>
+                <form:errors path="age"></form:errors>
+            </div>
+        </spring:bind>
+
         <spring:bind path="city">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="city" class="form-control" placeholder="Город"
@@ -87,6 +95,14 @@
                     <option value="женщина">женщина</option>
                 </form:select>
                 <form:errors path="sex"></form:errors>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="interests">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="interests" class="form-control" placeholder="Интересы"
+                            autofocus="true"></form:input>
+                <form:errors path="interests"></form:errors>
             </div>
         </spring:bind>
 
