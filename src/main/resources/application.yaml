@@ -1,13 +1,14 @@
 spring:
   datasource:
-    jdbcUrl: jdbc:mysql://localhost:3306/db_social?useUnicode=true&serverTimezone=Europe/Moscow&useSSL=true&verifyServerCertificate=false
-    username: springuser
-    password: ThePassword
+    jdbcUrl: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
   liquibase:
-    user: springuser
-    password: ThePassword
+    user: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
     change-log: classpath:/liquibase/changelog.xml
-    url: "jdbc:mysql://localhost:3306/db_social?useUnicode=true&serverTimezone=Europe/Moscow&useSSL=true&verifyServerCertificate=false"
+    url: ${JDBC_DATABASE_URL}
     database-change-log-table: network_databaseChangeLog
     database-change-log-lock-table: network_databaseChangeLogLock
   mvc:
