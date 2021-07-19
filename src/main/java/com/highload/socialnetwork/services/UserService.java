@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,9 +23,11 @@ public class UserService {
 
     public void save(UserExt userForm) throws Exception {
         User user = UserExt2UserMapper.map(userForm);
+        List<AccessRole> roles = new ArrayList<>();
+        roles.add(AccessRole.USER);
         user = user.toBuilder()
                 .password(encoder.encode(user.getPassword()))
-                .roles(List.of(AccessRole.USER))
+                .roles(roles)
                 .build();
         User findedUser = userRepository.findByLogin(userForm.getLogin());
         if (findedUser == null) {

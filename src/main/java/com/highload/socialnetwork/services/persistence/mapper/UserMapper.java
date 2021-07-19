@@ -40,7 +40,7 @@ public class UserMapper {
 
     private static List<AccessRole> getAuthorities(String strRoles) {
         if (Objects.isNull(strRoles)) {
-            return List.of();
+            return new ArrayList<>();
         }
 
         List<String> roles = Arrays.asList(strRoles.split("\\s*,\\s*"));
