@@ -32,7 +32,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByLogin(String login) {
-        String preparedByLogin = "select u.*, (select group_concat(r.name) as roles\n" +
+        String preparedByLogin = "select u.*, (select array_agg(r.name) as roles\n" +
                 "from users u\n" +
                 "    left join user_role ur on u.user_id = ur.user_id\n" +
                 "    left join role r on ur.role_id = r.role_id\n" +
@@ -60,7 +60,7 @@ public class UserRepositoryImpl implements UserRepository {
         for (AccessRole role : user.getRoles()) {
             System.out.println("Role.name = " + role.name());
             long idRole = jdbcTemplate.queryForObject(preparedRoleSearch, new Object[]{role.name()}, Long.class);
-            System.out.println("savedUser" + savedUser + "idRole" + idRole);
+            System.out.println("savedUser " + savedUser + "idRole" + idRole);
             jdbcTemplate.update(preparedUserRoleInsert, savedUser.getUserId(), idRole);
         }
     }
