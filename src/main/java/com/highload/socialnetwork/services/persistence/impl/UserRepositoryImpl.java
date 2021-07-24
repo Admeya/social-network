@@ -37,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
                 "    left join user_role ur on u.user_id = ur.user_id\n" +
                 "    left join role r on ur.role_id = r.role_id\n" +
                 "where u.login=?) as roles\n" +
-                "from db_social.users u where login = ?";
+                "from users u where login = ?";
 
         User user = null;
         try {
