@@ -48,6 +48,7 @@ public class UserMapper {
         System.out.println("roles" + roles);
         List<AccessRole> authorities = new ArrayList<>();
         for (String role : roles) {
+            role = role.replace("{","").replace("}", "");
             System.out.println("roleBefore" + role);
             System.out.println("from:" + AccessRole.from(role));
             authorities.add(AccessRole.from(role));
