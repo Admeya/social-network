@@ -58,9 +58,7 @@ public class UserRepositoryImpl implements UserRepository {
         String preparedRoleSearch = "SELECT role_id FROM role WHERE name = ?";
         String preparedUserRoleInsert = "INSERT INTO user_role(user_id, role_id) VALUES (?,?)";
         for (AccessRole role : user.getRoles()) {
-            System.out.println("Role.name = " + role.name());
             long idRole = jdbcTemplate.queryForObject(preparedRoleSearch, new Object[]{role.name()}, Long.class);
-            System.out.println("savedUser " + savedUser + "idRole" + idRole);
             jdbcTemplate.update(preparedUserRoleInsert, savedUser.getUserId(), idRole);
         }
     }
