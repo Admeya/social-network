@@ -41,6 +41,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private static List<GrantedAuthority> getAuthorities(List<AccessRole> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>();
         for (AccessRole role : roles) {
+            System.out.println("role:" + role);
             authorities.add(new SimpleGrantedAuthority(role.name()));
         }
         return authorities;
