@@ -49,7 +49,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void save(User user) {
+    public User save(User user) {
         String preparedSaveUser = "INSERT INTO users(name, surname, birthday, login, password, sex, city, interests, age) VALUES(?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(preparedSaveUser, user.getName(), user.getSurname(), user.getBirthday(),
                 user.getLogin(), user.getPassword(), user.getSex(), user.getCity(), user.getInterests(), user.getAge());
@@ -61,10 +61,29 @@ public class UserRepositoryImpl implements UserRepository {
             long idRole = jdbcTemplate.queryForObject(preparedRoleSearch, new Object[]{role.name()}, Long.class);
             jdbcTemplate.update(preparedUserRoleInsert, savedUser.getUserId(), idRole);
         }
+        return savedUser;
     }
 
     @Override
     public int delete(String id) {
         return 0;
+    }
+
+    @Override
+    public User findById(Long id) {
+        String preparedByLogin = "select u.*, (select array_agg(r.name) as roles\n" +
+                "from users u\n" +
+                "    left join user_role ur on u.user_id = ur.user_id\n" +
+                "    left join role r on ur.role_id = r.role_id\n" +
+                "where u.user_id=?) as roles\n" +
+                "from users u where user_id = ?";
+
+        User user = null;
+        try {
+            user = jdbcTemplate.queryForObject(preparedByLogin, new Object[]{id, id}, UserMapper.ROW_MAPPER);
+        } catch (DataAccessException dataAccessException) {
+            LOGGER.debug("Couldn't find entity of type Person with login {}", id);
+        }
+        return user;
     }
 }

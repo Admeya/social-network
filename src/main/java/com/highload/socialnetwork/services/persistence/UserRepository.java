@@ -10,7 +10,9 @@ public interface UserRepository {
 
     User findByLogin(String login);
 
-    void save(User user);
+    User findById(Long login);
+
+    User save(User user);
 
     int delete(String id);
 }
