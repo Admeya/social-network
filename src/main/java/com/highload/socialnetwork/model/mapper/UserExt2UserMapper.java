@@ -20,4 +20,18 @@ public class UserExt2UserMapper {
                 .age(userExt.getAge())
                 .build();
     }
+
+    public UserExt map(User user) {
+        return UserExt.builder()
+                .username(user.getName())
+                .surname(user.getSurname())
+                .birthday(user.getBirthday())
+                .login(user.getLogin())
+                .password(user.getPassword())
+                .sex(user.getSex())
+                .city(user.getCity())
+                .interests(user.getInterests())
+                .age(user.getAge())
+                .build();
+    }
 }

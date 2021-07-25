@@ -15,13 +15,17 @@ import java.util.List;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder encoder;
 
     @Autowired
-    private PasswordEncoder encoder;
+    public UserService(UserRepository userRepository, PasswordEncoder encoder) {
+        this.userRepository = userRepository;
+        this.encoder = encoder;
+    }
 
-    public void save(UserExt userForm) throws Exception {
+    public User save(UserExt userForm) throws Exception {
         User user = UserExt2UserMapper.map(userForm);
         List<AccessRole> roles = new ArrayList<>();
         roles.add(AccessRole.USER);
@@ -31,9 +35,14 @@ public class UserService {
                 .build();
         User findedUser = userRepository.findByLogin(userForm.getLogin());
         if (findedUser == null) {
-            userRepository.save(user);
+            findedUser = userRepository.save(user);
         } else {
             throw new Exception("User already exist");
         }
+        return findedUser;
+    }
+
+    public User viewUser(Long id) {
+        return userRepository.findById(id);
     }
 }
