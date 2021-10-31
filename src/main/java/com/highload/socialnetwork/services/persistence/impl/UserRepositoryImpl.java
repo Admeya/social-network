@@ -50,8 +50,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(User user) {
-        String preparedSaveUser = "INSERT INTO users(name, surname, birthday, login, password, sex, city, interests, age) VALUES(?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(preparedSaveUser, user.getName(), user.getSurname(), user.getBirthday(),
+        String preparedSaveUser = "INSERT INTO users(name, surname, login, password, sex, city, interests, age) VALUES(?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(preparedSaveUser, user.getName(), user.getSurname(),
                 user.getLogin(), user.getPassword(), user.getSex(), user.getCity(), user.getInterests(), user.getAge());
 
         User savedUser = findByLogin(user.getLogin());

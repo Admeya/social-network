@@ -29,11 +29,6 @@ public class UserExt {
     private String status;
 
     /**
-     * Дата рождения
-     */
-    private LocalDate birthday;
-
-    /**
      * Логин
      */
     private String login;
