@@ -11,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -85,5 +86,19 @@ public class UserRepositoryImpl implements UserRepository {
             LOGGER.debug("Couldn't find entity of type Person with login {}", id);
         }
         return user;
+    }
+
+    @Override
+    public List<User> findByNameSurname(String name, String surname) {
+        String preparedByNameSurname = "select u.*, 'USER' as roles\n" +
+                "from users u where name LIKE CONCAT( ?,'%') and surname LIKE CONCAT( ?,'%')";
+
+        List<User> users = new ArrayList<>();
+        try {
+            users.addAll(jdbcTemplate.query(preparedByNameSurname, new Object[]{name, surname}, UserMapper.ROW_MAPPER));
+        } catch (DataAccessException dataAccessException) {
+            LOGGER.debug("Couldn't find entity of type Person with name {} and surname {}", name, surname);
+        }
+        return users;
     }
 }

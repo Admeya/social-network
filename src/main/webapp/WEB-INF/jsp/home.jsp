@@ -28,9 +28,7 @@
             <td>
                 <img src="../../resources/images/logo.jpg" height="50" width="125">
             </td>
-            <td>
-                <input type="search">
-            </td>
+
             <td>
                 <form id="logoutForm" method="post" action="${contextPath}/logout">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -42,6 +40,23 @@
                 </h4>
             </td>
             </c:if>
+        </tr>
+        <tr>
+            <form:form method="POST" modelAttribute="userSearchForm" class="form-signin">
+
+                <td>
+                    <spring:bind path="username">
+                        <div class="form-group ${status.error ? 'has-error' : ''}">
+                            <label for="username">Поиск по имени и фамилии</label>
+                            <form:input type="text" path="username" class="form-control"
+                                        autofocus="true"></form:input>
+                            <form:errors path="username"></form:errors>
+                        </div>
+                    </spring:bind>
+                </td>
+
+            </form:form>
+        </tr>
     </table>
     <form:form method="GET" class="form-signin">
         <table>
