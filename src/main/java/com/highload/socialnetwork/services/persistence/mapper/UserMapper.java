@@ -21,7 +21,6 @@ public class UserMapper {
                     resultSet.getString("name"),
                     resultSet.getString("surname"),
                     resultSet.getString("status"),
-                    getDate(resultSet.getDate("birthday")),
                     resultSet.getString("login"),
                     resultSet.getString("password"),
                     getAuthorities(resultSet.getString("roles")),
