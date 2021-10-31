@@ -29,11 +29,6 @@ public class User {
     private String surname;
 
     /**
-     * Семейное положение
-     */
-    private String status;
-
-    /**
      * Логин
      */
     private String login;

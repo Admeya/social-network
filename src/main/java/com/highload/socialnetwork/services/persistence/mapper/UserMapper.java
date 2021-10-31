@@ -20,7 +20,6 @@ public class UserMapper {
                     resultSet.getLong("user_id"),
                     resultSet.getString("name"),
                     resultSet.getString("surname"),
-                    resultSet.getString("status"),
                     resultSet.getString("login"),
                     resultSet.getString("password"),
                     getAuthorities(resultSet.getString("roles")),
