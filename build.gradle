@@ -40,4 +40,5 @@ buildscript {
         runtimeOnly 'org.apache.tomcat.embed:tomcat-embed-jasper'
         testImplementation('org.springframework.boot:spring-boot-starter-test')
         testCompile "org.projectlombok:lombok:${lombokVersion}"
+        implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
     }
